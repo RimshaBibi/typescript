@@ -57,12 +57,12 @@ const postUserSignInOptions = {
 };
 function userRoutes(fastify, opts, done) {
     fastify.post('/signup', postUserSignUpOptions, async (request, reply) => {
-        console.log("this sign in route is called");
+        // console.log("this sign in route is called")
         const { userName, userEmail, userPassword } = request.body;
         const existingUser = await db_js_1.default.query("SELECT * FROM usertable WHERE email = $1", [userEmail]);
         if (existingUser.rows.length === 0) {
             try {
-                console.log(request.body);
+                // console.log(request.body)
                 // Creating a unique salt for a particular user
                 const salt = crypto_1.default.randomBytes(16).toString('hex');
                 // Hash the salt and password with 1000 iterations, 64 length, and sha512 digest 
@@ -124,9 +124,9 @@ function userRoutes(fastify, opts, done) {
                     html: emailContent
                 };
                 try {
-                    //  await transporter.sendMail(mailOptions);
+                    await transporter.sendMail(mailOptions);
                     const data = await db_js_1.default.query('INSERT INTO usertable(user_id, name, email, user_password, salt) VALUES ($1, $2, $3, $4, $5) RETURNING *', [user_id, userName, userEmail, newPassword, salt]);
-                    console.log("data.rows[0].name", data.rows[0].name);
+                    //  console.log("data.rows[0].name",data.rows[0].name)
                     return reply.status(201).send({
                         user_id,
                         userName: data.rows[0].name,
@@ -148,7 +148,7 @@ function userRoutes(fastify, opts, done) {
         }
     });
     fastify.post('/signin', postUserSignInOptions, async (request, reply) => {
-        console.log("this sign in route is called");
+        //  console.log("this sign in route is called")
         const { userEmail, userPassword } = request.body;
         const data = await db_js_1.default.query("SELECT * FROM usertable WHERE email= $1", [userEmail]);
         if (data.rows.length === 0) {

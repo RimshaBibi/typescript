@@ -1,20 +1,22 @@
 import { Pool } from 'pg';
+import dotenv from "dotenv"
+dotenv.config()
 
 
 type DatabaseConfig = {
-  user: string;
-  password: string;
-  host: string;
-  port: number;
+  user: any;
+  password: any;
+  host: any;
+  port: any;
   database: string;
 };
 
 
 const dbConfig: DatabaseConfig = {
-  user: 'postgres',
-  password: 'resha',
-  host: 'localhost',
-  port: 5432,
+  user:process.env.dbUser,
+  password: process.env.dbPassword,
+  host: process.env.host,
+  port:process.env.dbPort,
   database: 'userDatabase',
 };
 

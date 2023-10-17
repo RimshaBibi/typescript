@@ -6,6 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const fastify_1 = __importDefault(require("fastify"));
 const static_1 = __importDefault(require("@fastify/static"));
 const path_1 = __importDefault(require("path"));
+const dotenv_1 = __importDefault(require("dotenv"));
+dotenv_1.default.config();
 const app = (0, fastify_1.default)({ logger: true });
 const user_js_1 = __importDefault(require("./routes/user.js"));
 const PORT = parseInt(process.env.PORT || '8080');
