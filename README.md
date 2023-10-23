@@ -97,7 +97,8 @@ Contributions are welcome! Please follow these guidelines:
 This project is licensed under the [MIT License](LICENSE).
 
 ### Contact
-For questions or support, contact Rimsha Bibi.
+For questions or support, contact [Rimsha Bibi on LinkedIn](https://www.linkedin.com/in/rimsha-bibi-443745204 "LinkedIn ID").
+
 
 
 
